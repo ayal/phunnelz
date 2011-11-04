@@ -56,8 +56,8 @@ window.fbAsyncInit = function() {
 				$.each(fd.data, function(j, msg){
 					   console.log(msg.from.name);
 					   var fimg = $('#' + msg.from.id);
-					   fimg.css('width', (fimg.width() + 3) + 'px')
-					   .css('height', (fimg.height() + 3) + 'px');
+					   fimg.css('width', (fimg.width() + 10) + 'px')
+					   .css('height', (fimg.height() + 10) + 'px');
 
 					   var days = (new Date() - (new Date(msg.updated_time))) / 1000 / 60 / 60 / 24;
 					   
@@ -70,8 +70,8 @@ window.fbAsyncInit = function() {
 					   }
 					   
 					   if (vid) {
-					       if (!all[msg.from.id]){
-						   all[msg.from.id] = {data:{}};
+					       if (!alll[msg.from.id]){
+						   alll[msg.from.id] = {data:{}};
 					       }
 					       alll[msg.from.id].data[vid] = {
 						   host: 'yt',
