@@ -37,11 +37,9 @@ window.fbAsyncInit = function() {
 	}
     }
 
-    alll = {data: {}};
+    alll = {};
 
     $('#playit').click(function(){
-			   console.log(JSON.stringify(alll));
-			   $(this).append('<a>PLAYYY</a>').attr('href', 'http://3.bigrbox1.appspot.com/box/party?party=true#' + encodeURIComponent(JSON.stringify(alll)));
 		       });
 
     function afterInit(response) {
@@ -58,8 +56,9 @@ window.fbAsyncInit = function() {
 				$.each(fd.data, function(j, msg){
 					   console.log(msg.from.name);
 					   var fimg = $('#' + msg.from.id);
-					   fimg.css('width', (fimg.width() + 10) + 'px')
-					   .css('height', (fimg.height() + 10) + 'px');
+					   fimg.css('width', (fimg.width() + 3) + 'px')
+					   .css('height', (fimg.height() + 3) + 'px');
+
 					   var days = (new Date() - (new Date(msg.updated_time))) / 1000 / 60 / 60 / 24;
 					   
 					   var vid = null;
@@ -71,7 +70,10 @@ window.fbAsyncInit = function() {
 					   }
 					   
 					   if (vid) {
-					       alll.data[vid] = {
+					       if (!all[msg.from.id]){
+						   all[msg.from.id] = {data:{}};
+					       }
+					       alll[msg.from.id].data[vid] = {
 						   host: 'yt',
 						   url: msg.link
 					       };
@@ -93,9 +95,15 @@ window.fbAsyncInit = function() {
 		 if (!url){
 		     FB.api('/me/friends?fields=picture,name', function(resp) {
 				$.each(resp.data, function(i, frnd){
-					   $('<div></div>').attr('id', frnd.id).append($('<img src="' + frnd.picture + '">')).click(function(){
-											  
-										      }).appendTo('body');
+					   $('<div></div>').attr('id', frnd.id).append($('<img src="' + frnd.picture + '">')
+										       .css('width', '100%')
+										       .css('width', '100%'))
+					       .click(function(){
+							  var url = 
+							      'http://3.bigrbox1.appspot.com/box/party?party=true#' +
+							      encodeURIComponent(JSON.stringify(alll[frnd.id]));
+							  window.open(url, 'mywin','left='+50+',top='+0+',width=1024,height=768,toolbar=0,resizable=0,scrollbars=0');   
+						      }).appendTo('body');
 					   FB.api('/' + frnd.id + '/feed', cb);		   
 				       });
 			    });
