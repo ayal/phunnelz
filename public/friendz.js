@@ -37,11 +37,11 @@ window.fbAsyncInit = function() {
 	}
     }
 
-    alll = {};
+    alll = {data: {}};
 
     $('#playit').click(function(){
 			   console.log(JSON.stringify(alll));
-			   $(this).append('<a>PLAYYY</a>').attr('href', 'http://3.bigrbox1.appspot.com/#' + encodeURIComponent(JSON.stringify(alll)));
+			   $(this).append('<a>PLAYYY</a>').attr('href', 'http://3.bigrbox1.appspot.com/box/party?party=true#' + encodeURIComponent(JSON.stringify(alll)));
 		       });
 
     function afterInit(response) {
@@ -69,7 +69,7 @@ window.fbAsyncInit = function() {
 					   }
 					   
 					   if (vid) {
-					       alll[vid] = {
+					       alll.data[vid] = {
 						   host: 'yt',
 						   url: msg.link
 					       };
