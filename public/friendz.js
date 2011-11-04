@@ -90,11 +90,11 @@ window.fbAsyncInit = function() {
 		 };
 
 		 if (!url){
-		     FB.api('/me/friends', function(resp) {
+		     FB.api('/me/friends?fields=picture,name', function(resp) {
 				$.each(resp.data, function(i, frnd){
-					   $('<div></div>').attr('id', frnd.id).append('<img src="' + frnd.picture + '">').click(function(){
+					   $('<div></div>').attr('id', frnd.id).append($('<img src="' + frnd.picture + '">')).click(function(){
 											  
-										      });
+										      }).appendTo('body');
 					   FB.api('/' + frnd.id + '/feed', cb);		   
 				       });
 			    });
