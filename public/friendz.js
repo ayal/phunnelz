@@ -57,7 +57,8 @@ window.fbAsyncInit = function() {
 				console.log(fd);
 				$.each(fd.data, function(j, msg){
 					   console.log(msg.from.name);
-
+					   $('#' + msg.from).css('width', ($('#' + msg.from).width() + 10) + 'px')
+					   .css('height', ($('#' + msg.from).height() + 10) + 'px');
 					   var days = (new Date() - (new Date(msg.updated_time))) / 1000 / 60 / 60 / 24;
 					   
 					   var vid = null;
@@ -76,7 +77,7 @@ window.fbAsyncInit = function() {
 					   }
 				       });
 
-				if ($('#playlist').size() < 10){
+				if ($('#playlist').size() < 10 && fd.paging) {
 				    iterateFeed(fd.paging.next);
 				}
 			    }
@@ -89,7 +90,14 @@ window.fbAsyncInit = function() {
 		 };
 
 		 if (!url){
-		     FB.api('/me/home', cb);
+		     FB.api('/me/friends', function(resp) {
+				$.each(resp.data, function(i, frnd){
+					   $('<div></div>').attr('id', frnd.id).append('<img src="' + frnd.picture + '">').click(function(){
+											  
+										      });
+					   FB.api('/' + frnd.id + '/feed', cb);		   
+				       });
+			    });
 		 } 
 		 else {
 		     console.log(url);
