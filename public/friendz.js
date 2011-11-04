@@ -47,8 +47,8 @@ window.fbAsyncInit = function() {
 	debugger;
 	var p = $(id).parent();
 	var that = $(id);
-	var w = that.width();
-	var h = that.height();
+	var w = that.width() * 2;
+	var h = that.height() * 2;
 	
 	$.each(p.children(), function(i, c){
 		   if ($(c).width() < that.width() * 2) {
@@ -60,8 +60,8 @@ window.fbAsyncInit = function() {
 
 
 	$(id).animate({
-			  'width': $(id).width() * 2,
-			  'height': $(id).height() * 2
+			  'width': w,
+			  'height': h
 		      }, function() {
 			  $(id)
 			      .css('width', w * 2)
