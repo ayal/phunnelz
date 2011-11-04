@@ -94,6 +94,7 @@ window.fbAsyncInit = function() {
 					   }
 					   
 					   if (vid) {
+					       $('#' + msg.from.id).show();
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
 					       if (track[msg.from.id] !== 0 && track[msg.from.id] % 10) {
