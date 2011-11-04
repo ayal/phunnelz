@@ -95,7 +95,9 @@ window.fbAsyncInit = function() {
 		 if (!url){
 		     FB.api('/me/friends?fields=picture,name', function(resp) {
 				$.each(resp.data, function(i, frnd){
-					   $('<div></div>').attr('id', frnd.id).append($('<img src="' + frnd.picture + '">')
+					   $('<div></div>')
+					       .addClass('friend')
+					       .attr('id', frnd.id).append($('<img src="' + frnd.picture + '">')
 										       .css('width', '100%')
 										       .css('width', '100%'))
 					       .click(function(){
