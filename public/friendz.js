@@ -99,7 +99,7 @@ window.fbAsyncInit = function() {
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
 					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 20) === 0) {
-						   setTimeout(function(){reposition('#' + msg.from.id);}, 0);   
+						   reposition('#' + msg.from.id);
 					       }
 					       if (!alll[msg.from.id]){
 						   alll[msg.from.id] = {data:{}};
@@ -111,8 +111,10 @@ window.fbAsyncInit = function() {
 					   }
 				       });
 
-				if ($('#playlist').size() < 10 && fd.paging) {
-				    iterateFeed(fd.paging.next);
+				if (fd.paging) {
+				    setTimeout(function(){
+						   iterateFeed(fd.paging.next);
+					       }, 100);
 				}
 			    }
 			    
