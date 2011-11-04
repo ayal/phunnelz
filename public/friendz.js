@@ -57,7 +57,7 @@ window.fbAsyncInit = function() {
 				console.log(fd);
 				$.each(fd.data, function(j, msg){
 					   console.log(msg.from.name);
-					   $('#' + msg.from).css('width', ($('#' + msg.from).width() + 10) + 'px')
+					   $('#' + msg.from.id).css('width', ($('#' + msg.from).width() + 10) + 'px')
 					   .css('height', ($('#' + msg.from).height() + 10) + 'px');
 					   var days = (new Date() - (new Date(msg.updated_time))) / 1000 / 60 / 60 / 24;
 					   
