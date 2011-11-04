@@ -52,8 +52,10 @@ window.fbAsyncInit = function() {
 	
 	$.each(p.children(), function(i, c){
 		   if ($(c).width() < that.width() * 2) {
+		       var clk = that.click;
                        that.remove();
 		       $(c).before(that);
+		       $(id).click = clk;
 		       return false;
 		   }
 	       });
@@ -126,11 +128,12 @@ window.fbAsyncInit = function() {
 		 };
 
 		 if (!url){
-		     FB.api('/me/friends?fields=picture,name&type=large', function(resp) {
+		     FB.api('/me/friends', function(resp) {
 				$.each(resp.data, function(i, frnd){
+					   var theimg = 'https://graph.facebook.com/' + frnd.id + '/picture?type=large';
 					   $('<div></div>')
 					       .addClass('friend')
-					       .attr('id', frnd.id).append($('<img src="' + frnd.picture + '">')
+					       .attr('id', frnd.id).append($('<img src="' + theimg + '">')
 										       .css('width', '100%')
 										       .css('width', '100%'))
 					       .click(function(){
