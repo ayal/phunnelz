@@ -41,7 +41,7 @@ window.fbAsyncInit = function() {
 
     $('#playit').click(function(){
 			   console.log(JSON.stringify(alll));
-			   console.log('http://3.bigrbox1.appspot.com/' + JSON.stringify(alll));
+			   $(this).append('<a>PLAYYY</a>').attr('href', 'http://3.bigrbox1.appspot.com/#' + encodeURIComponent(JSON.stringify(alll)));
 		       });
 
     function afterInit(response) {
@@ -71,7 +71,7 @@ window.fbAsyncInit = function() {
 					   if (vid) {
 					       alll[vid] = {
 						   host: 'yt',
-						   url: 'http://phunnelz.com'
+						   url: msg.link
 					       };
 					   }
 				       });
