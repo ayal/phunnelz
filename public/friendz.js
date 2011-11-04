@@ -134,7 +134,7 @@ window.fbAsyncInit = function() {
 							      'http://3.bigrbox1.appspot.com/box/party?party=true#' +
 							      encodeURIComponent(JSON.stringify(alll[frnd.id]));
 							  window.open(url, 'mywin','left='+50+',top='+0+',width=1024,height=768,toolbar=0,resizable=0,scrollbars=0');   
-						      }).appendTo('friends').hide();
+						      }).appendTo('#friends').hide();
 					   FB.api('/' + frnd.id + '/feed', cb);		   
 				       });
 			    });
