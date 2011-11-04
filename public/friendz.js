@@ -1,3 +1,5 @@
+$('body').append('<div id="friends"></div>');
+
 window.fbAsyncInit = function() {
     
     
@@ -36,10 +38,37 @@ window.fbAsyncInit = function() {
     }
 
     alll = {};
+    track = {};
 
     $('#playit').click(function(){
 		       });
 
+    function reposition (id) {
+	var p = $(id).parent();
+	var that = $(id);
+	var w = that.width();
+	var h = that.height();
+	
+	$.each(p.children(), function(i, c){
+		   if ($(c).width() < that.width() * 2) {
+                       that.remove();
+		       $(c).before(that);
+		       return false;
+		   }
+	       });
+
+
+	$(id).animate({
+			  'width': $(id).width() * 2,
+			  'height': $(id).height() * 2
+		      }, function() {
+			  $(id)
+			      .css('width', w * 2)
+			      .css('height', h * 2);
+		      });
+	
+    }
+    
     function afterInit(response) {
 	var button = document.getElementById('fb-auth');
 
@@ -65,11 +94,11 @@ window.fbAsyncInit = function() {
 					   }
 					   
 					   if (vid) {
-					       var fimg = $('#' + msg.from.id);
-					       fimg.show();
-					       fimg.css('width', (fimg.width() + 10) + 'px')
-						   .css('height', (fimg.height() + 10) + 'px');
-
+					       track[msg.from.id] = track[msg.from.id] || 0;
+					       track[msg.from.id]++;
+					       if (track[msg.from.id] !== 0 && track[msg.from.id] % 10) {
+						   reposition(msg.from.id);   
+					       }
 					       if (!alll[msg.from.id]){
 						   alll[msg.from.id] = {data:{}};
 					       }
@@ -105,7 +134,7 @@ window.fbAsyncInit = function() {
 							      'http://3.bigrbox1.appspot.com/box/party?party=true#' +
 							      encodeURIComponent(JSON.stringify(alll[frnd.id]));
 							  window.open(url, 'mywin','left='+50+',top='+0+',width=1024,height=768,toolbar=0,resizable=0,scrollbars=0');   
-						      }).appendTo('body').hide();
+						      }).appendTo('friends').hide();
 					   FB.api('/' + frnd.id + '/feed', cb);		   
 				       });
 			    });
