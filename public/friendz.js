@@ -52,10 +52,8 @@ window.fbAsyncInit = function() {
 	
 	$.each(p.children(), function(i, c){
 		   if ($(c).width() < that.width() * 2) {
-		       var clk = that.click;
-                       that.remove();
+                       that.detach();
 		       $(c).before(that);
-		       $(id).click = clk;
 		       return false;
 		   }
 	       });
