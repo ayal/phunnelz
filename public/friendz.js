@@ -94,11 +94,11 @@ window.fbAsyncInit = function() {
 					       vid = getId(msg.source);    
 					   }
 					   
-					   if (vid) {
+					   if (vid && (!alll[msg.from.id] || !alll[msg.from.id].data[vid])) {
 					       $('#' + msg.from.id).show();
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
-					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 20) === 0) {
+					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 15) === 0) {
 						   reposition('#' + msg.from.id);
 					       }
 					       if (!alll[msg.from.id]){
