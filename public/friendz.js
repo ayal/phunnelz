@@ -99,7 +99,7 @@ window.fbAsyncInit = function() {
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
 					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 10) === 0) {
-						   reposition(msg.from.id);   
+						   reposition('#' + msg.from.id);   
 					       }
 					       if (!alll[msg.from.id]){
 						   alll[msg.from.id] = {data:{}};
