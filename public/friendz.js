@@ -100,21 +100,6 @@ window.fbAsyncInit = function() {
 					       $('#' + msg.from.id).show();
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
-					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 5) === 0) {
-						   var theimg = 'https://graph.facebook.com/' + msg.from.id + '/picture?type=large';
-						   $('<div></div>')
-						       .addClass('friend')
-						       .attr('id', msg.from.id).append($('<img src="' + theimg + '">')
-										   .css('width', '100%')
-										   .css('width', '100%'))
-						       .click(function(){
-								  var url = 
-								      'http://3.bigrbox1.appspot.com/box/party?party=true#' +
-								      encodeURIComponent(JSON.stringify(alll[msg.from.id]));
-								  window.open(url, 'mywin','left='+50+',top='+0+',width=1024,height=768,toolbar=0,resizable=0,scrollbars=0');   
-							      }).appendTo('#friends').hide();
-
-					       }
 					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 20) === 0) {
 						   reposition('#' + msg.from.id);
 					       }
@@ -134,17 +119,28 @@ window.fbAsyncInit = function() {
 					       }, 100);
 				}
 			    }
-		     
-		     else {
-			 
-			 console.log('no data', 'gu', fd.data);
-		     }
-		     
+			    
+			    else {
+				
+				console.log('no data', 'gu', fd.data);
+			    }
+			    
 		 };
 
 		 if (!url){
-		     FB.api('/me/friends', function(resp) {
+		     FB.api('/me/friends?fields=picture', function(resp) {
 				$.each(resp.data, function(i, frnd){
+					   $('<div></div>')
+					       .addClass('friend')
+					       .attr('id', frnd.id).append($('<img src="' + frnd.picture + '">')
+										       .css('width', '100%')
+										       .css('width', '100%'))
+					       .click(function(){
+							  var url = 
+							      'http://3.bigrbox1.appspot.com/box/party?party=true#' +
+							      encodeURIComponent(JSON.stringify(alll[frnd.id]));
+							  window.open(url, 'mywin','left='+50+',top='+0+',width=1024,height=768,toolbar=0,resizable=0,scrollbars=0');   
+						      }).appendTo('#friends').hide();
 					   FB.api('/' + frnd.id + '/feed', cb);		   
 				       });
 			    });
@@ -157,7 +153,7 @@ window.fbAsyncInit = function() {
 				jsonp: 'callback',
 				success: cb
 			    });
-		     
+        
 		 }
 
 	     })();
