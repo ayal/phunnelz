@@ -1,5 +1,3 @@
-$('body').append($('<div id="playit">PLAY</div>'));
-
 window.fbAsyncInit = function() {
     
     
@@ -152,7 +150,10 @@ window.fbAsyncInit = function() {
 
   // run once with current status and whenever the status changes
     FB.getLoginStatus(afterInit);
-    FB.Event.subscribe('auth.statusChange', function(status){console.log(status);});
+    FB.Event.subscribe('auth.statusChange', function(status){
+			   console.log(status);
+			   afterInit(status);
+		       });
 };
 
 (function() {

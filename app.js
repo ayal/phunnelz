@@ -516,7 +516,7 @@ app.get('/channel', function(req, res){
 	    res.send('<script src="http://connect.facebook.net/en_US/all.js"></script>');
 	});
 
-app.all('/', function (req, res) {
+app.all('/party', function (req, res) {
 	    evt(req, 'root');
 	    res.render("phunnelz", {layout: true, req: req, cfg: cfg});
 	});
