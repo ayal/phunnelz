@@ -98,8 +98,8 @@ window.fbAsyncInit = function() {
 					       $('#' + msg.from.id).show();
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
-					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 15) === 0) {
-						   reposition('#' + msg.from.id);   
+					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 20) === 0) {
+						   setTimeout(function(){reposition('#' + msg.from.id);}, 0);   
 					       }
 					       if (!alll[msg.from.id]){
 						   alll[msg.from.id] = {data:{}};
