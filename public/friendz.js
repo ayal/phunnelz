@@ -1,4 +1,4 @@
-$('body').append($('<div id="playit"></div>'));
+$('body').append($('<div id="playit">PLAY</div>'));
 
 window.fbAsyncInit = function() {
     
@@ -69,7 +69,7 @@ window.fbAsyncInit = function() {
 					   }
 					   
 					   if (vid) {
-					       all[vid] = {
+					       alll[vid] = {
 						   host: 'yt',
 						   url: 'http://phunnelz.com'
 					       };
