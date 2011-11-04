@@ -55,9 +55,6 @@ window.fbAsyncInit = function() {
 				console.log(fd);
 				$.each(fd.data, function(j, msg){
 					   console.log(msg.from.name);
-					   var fimg = $('#' + msg.from.id);
-					   fimg.css('width', (fimg.width() + 10) + 'px')
-					   .css('height', (fimg.height() + 10) + 'px');
 
 					   var days = (new Date() - (new Date(msg.updated_time))) / 1000 / 60 / 60 / 24;
 					   
@@ -70,6 +67,11 @@ window.fbAsyncInit = function() {
 					   }
 					   
 					   if (vid) {
+					       var fimg = $('#' + msg.from.id);
+					       fimg.show();
+					       fimg.css('width', (fimg.width() + 10) + 'px')
+						   .css('height', (fimg.height() + 10) + 'px');
+
 					       if (!alll[msg.from.id]){
 						   alll[msg.from.id] = {data:{}};
 					       }
@@ -93,7 +95,7 @@ window.fbAsyncInit = function() {
 		 };
 
 		 if (!url){
-		     FB.api('/me/friends?fields=picture,name', function(resp) {
+		     FB.api('/me/friends?fields=picture,name&type=large', function(resp) {
 				$.each(resp.data, function(i, frnd){
 					   $('<div></div>')
 					       .addClass('friend')
@@ -105,7 +107,7 @@ window.fbAsyncInit = function() {
 							      'http://3.bigrbox1.appspot.com/box/party?party=true#' +
 							      encodeURIComponent(JSON.stringify(alll[frnd.id]));
 							  window.open(url, 'mywin','left='+50+',top='+0+',width=1024,height=768,toolbar=0,resizable=0,scrollbars=0');   
-						      }).appendTo('body');
+						      }).appendTo('body').hide();
 					   FB.api('/' + frnd.id + '/feed', cb);		   
 				       });
 			    });
