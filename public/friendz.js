@@ -44,13 +44,13 @@ window.fbAsyncInit = function() {
 		       
 		       $('#r' + id).animate({'width': el.width() + 'px',
 					     'height': el.height() + 'px',
-					     'top': elpos.top,
-					     'left': elpos.left}, function(){
+					     'top': elpos.top + 'px',
+					     'left': elpos.left + 'px'}, function(){
 						 $('#r' + id)
-						     .css('width', el.width())
-						     .css('height', el.height())
-						     .css('top', elpos.top)
-						     .css('left', elpos.left);
+						     .css('width', el.width() + 'px')
+						     .css('height', el.height() + 'px')
+						     .css('top', elpos.top + 'px')
+						     .css('left', elpos.left + 'px');
 					     });
 
 		   }
