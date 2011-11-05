@@ -47,7 +47,7 @@ window.fbAsyncInit = function() {
 		       $('#r' + id).animate({'width': el.width() + 'px',
 					     'height': el.height() + 'px',
 					     'top': elpos.top + 'px',
-					     'left': elpos.left + 'px'}, function(){
+					     'left': elpos.left + 'px'}, 1000, 'linear', function(){
 					     });
 
 		   }
