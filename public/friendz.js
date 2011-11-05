@@ -30,6 +30,8 @@ window.fbAsyncInit = function() {
 		       var prnd = $(el).clone();
 		       prnd.attr('id', 'r' + id);
 		       prnd.click = $(el).click;
+		       prnd.removeClass('friend');
+		       prnd.addClass('priend');
 		       $('#priends').append(prnd);
 		   }   
 
