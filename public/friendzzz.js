@@ -89,7 +89,7 @@ window.fbAsyncInit = function() {
 	var h = that.height() * 2;
 	
 	$.each(p.children(), function(i, c){
-		   if ($(c).width() < that.width() * 2) {
+		   if ($(c).width() < w) {
                        that.detach();
 		       $(c).before(that);
 		       return false;
@@ -102,8 +102,8 @@ window.fbAsyncInit = function() {
 			  'height': h
 		      }, function() {*/
 			  $(id)
-			      .css('width', w * 2)
-			      .css('height', h * 2);
+			      .css('width', w)
+			      .css('height', h);
 //		      });
 	
     }
@@ -136,7 +136,7 @@ window.fbAsyncInit = function() {
 					       $('#' + msg.from.id).show();
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
-					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 15) === 0) {
+					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 10) === 0) {
 						   reposition('#' + msg.from.id);
 					       }
 					       if (!alll[msg.from.id]){
