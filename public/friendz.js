@@ -38,7 +38,7 @@ window.fbAsyncInit = function() {
 	       });
     }
 
-    setTimeout(draw, 5000);
+    setInterval(draw, 5000);
 
     
     function getId(url){

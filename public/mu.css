@@ -3,11 +3,13 @@
     width: 768px;
     height: 768px;
     opacity: 0.5;
+    overflow: auto;
 }
 #priends {
     border: 1px solid black;
     width: 768px;
     height: 768px;
+    overflow: auto;
 }
 
 .priend {
