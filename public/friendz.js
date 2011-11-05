@@ -28,10 +28,6 @@ window.fbAsyncInit = function() {
 	$.each($('#friends').children(), function(i, el){
 		   var id = $(el).attr('id');
 		   
-		   if ($('#' + id).size() > 1) {
-		       debugger;
-		   }
-
 		   if ($('#r' + id).size() === 0) {
 		       var prnd = $('<div></div>');
 		       var prndimg = $($(el).children()[0]).clone();
@@ -44,8 +40,8 @@ window.fbAsyncInit = function() {
 		   var el  = $(el);
 		   var elpos = el.position();
 		   
-		   if ($('#r' + id).width() !== el.width() &&
-		       $('#r' + id).position().top !== elpos.top &&
+		   if ($('#r' + id).width() !== el.width() ||
+		       $('#r' + id).position().top !== elpos.top ||
 		       $('#r' + id).position().left !== elpos.left) {
 		       
 		       $('#r' + id).animate({'width': el.width() + 'px',
@@ -165,9 +161,6 @@ window.fbAsyncInit = function() {
 		 if (!url){
 		     FB.api('/me/friends?fields=picture', function(resp) {
 				$.each(resp.data, function(i, frnd){
-					   if ($('#' + frnd.id).size() > 0) {
-					       debugger;
-					   }
 
 					   $('<div></div>')
 					       .addClass('friend')
