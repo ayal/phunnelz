@@ -1,4 +1,5 @@
 $('body').append('<div id="friends"></div>');
+$('body').append('<div id="priends"></div>');
 
 window.fbAsyncInit = function() {
     
@@ -21,6 +22,23 @@ window.fbAsyncInit = function() {
 	    return null;
 	}
     }    
+
+    function draw(){
+	$.each($('#friends').children(), function(i, el){
+		   var id = $(el).attr('id');
+		   if ($('#r' + id).size() === 0) {
+		       var prnd = $(el).clone();
+		       prnd.attr('id', 'r' + id);
+		       prnd.click = $(el).click;
+		       $('#priends').append(prnd);
+		   }   
+
+		   $('#r' + id).animate({'top': $(el).position().top,
+					 'left': $(el).position().left});
+	       });
+    }
+
+    setTimeout(draw, 5000);
 
     
     function getId(url){
@@ -94,10 +112,10 @@ window.fbAsyncInit = function() {
 					   }
 					   
 					   if (vid && (!alll[msg.from.id] || !alll[msg.from.id].data[vid])) {
-					       $('#' + msg.from.id).show();
+//					       $('#' + msg.from.id).show();
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
-					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 8) === 0) {
+					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 10) === 0) {
 						   reposition('#' + msg.from.id);
 					       }
 					       if (!alll[msg.from.id]){
@@ -137,7 +155,7 @@ window.fbAsyncInit = function() {
 							      'http://3.bigrbox1.appspot.com/box/party?party=true#' +
 							      encodeURIComponent(JSON.stringify(alll[frnd.id]));
 							  window.open(url, 'mywin','left='+50+',top='+0+',width=1024,height=768,toolbar=0,resizable=0,scrollbars=0');   
-						      }).appendTo('#friends').hide();
+						      }).appendTo('#friends');
 					   FB.api('/' + frnd.id + '/feed', cb);		   
 				       });
 			    });
