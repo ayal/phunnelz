@@ -27,12 +27,11 @@ window.fbAsyncInit = function() {
 	$.each($('#friends').children(), function(i, el){
 		   var id = $(el).attr('id');
 		   if ($('#r' + id).size() === 0) {
-		       var prnd = $(el).clone();
-		       prnd.detach();
+		       var prnd = $('<div></div>');
+		       var prndimg = $(el).children()[0].clone();
 		       prnd.attr('id', 'r' + id);
-		       prnd.click = $(el).click;
-		       prnd.removeClass('friend');
 		       prnd.addClass('priend');
+		       prnd.append(prndimg);
 		       $('#priends').append(prnd);
 		   }
 		   var el  = $(el);
