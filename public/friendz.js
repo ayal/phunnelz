@@ -36,13 +36,15 @@ window.fbAsyncInit = function() {
 		       $('#priends').append(prnd);
 		   }   
 		   if ($('#r' + id).width() !== $(el).width() &&
-		      $('#r' + id).position().top !== $(el).position().top &&
+		       $('#r' + id).position().top !== $(el).position().top &&
 		       $('#r' + id).position().left !== $(el).position().left) {
 		       
 		       $('#r' + id).animate({'width': $(el).width() + 'px',
 					     'height': $(el).height() + 'px',
 					     'top': $(el).position().top,
-					     'left': $(el).position().left});
+					     'left': $(el).position().left}, function(){
+						var j = this; 
+					     });
 
 		   }
 	       });
