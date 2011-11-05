@@ -46,11 +46,6 @@ window.fbAsyncInit = function() {
 					     'height': el.height() + 'px',
 					     'top': elpos.top + 'px',
 					     'left': elpos.left + 'px'}, function(){
-						 $('#r' + id)
-						     .css('width', el.width() + 'px')
-						     .css('height', el.height() + 'px')
-						     .css('top', elpos.top + 'px')
-						     .css('left', elpos.left + 'px');
 					     });
 
 		   }
