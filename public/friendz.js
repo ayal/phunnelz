@@ -136,7 +136,7 @@ window.fbAsyncInit = function() {
 					   }
 					   
 					   if (vid && (!alll[msg.from.id] || !alll[msg.from.id].data[vid])) {
-//					       $('#' + msg.from.id).show();
+					       $('#' + msg.from.id).show();
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
 					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 15) === 0) {
@@ -175,7 +175,7 @@ window.fbAsyncInit = function() {
 					       .attr('id', frnd.id).append($('<img src="">')
 									   .css('width', '100%')
 									   .css('width', '100%'))
-					       .appendTo('#friends');
+					       .appendTo('#friends').hide();
 					   FB.api('/' + frnd.id + '/feed', cb);		   
 				       });
 			    });
