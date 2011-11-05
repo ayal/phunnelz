@@ -28,6 +28,7 @@ window.fbAsyncInit = function() {
 		   var id = $(el).attr('id');
 		   if ($('#r' + id).size() === 0) {
 		       var prnd = $(el).clone();
+		       prnd.detach();
 		       prnd.attr('id', 'r' + id);
 		       prnd.click = $(el).click;
 		       prnd.removeClass('friend');
@@ -35,8 +36,8 @@ window.fbAsyncInit = function() {
 		       $('#priends').append(prnd);
 		   }   
 
-		   $('#r' + id).animate({'width': $(el).width(),
-					 'height': $(el).height(),
+		   $('#r' + id).animate({'width': $(el).width() + 'px',
+					 'height': $(el).height() + 'px',
 					 'top': $(el).position().top,
 					 'left': $(el).position().left});
 	       });
