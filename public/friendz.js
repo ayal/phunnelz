@@ -1,5 +1,6 @@
-$('body').append('<div id="friends"></div>');
+
 $('body').append('<div id="priends"></div>');
+$('body').append('<div id="friends"></div>');
 
 window.fbAsyncInit = function() {
     
@@ -115,7 +116,7 @@ window.fbAsyncInit = function() {
 		 
 		 cb = function(fd) {
 			    if (fd.data) {
-			
+				
 				console.log(fd);
 				$.each(fd.data, function(j, msg){
 					   console.log(msg.from.name);
@@ -150,7 +151,7 @@ window.fbAsyncInit = function() {
 				if (fd.paging) {
 				    setTimeout(function(){
 						   iterateFeed(fd.paging.next);
-					       }, 100);
+					       }, 1000);
 				}
 			    }
 			    

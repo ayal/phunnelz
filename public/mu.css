@@ -4,15 +4,16 @@
     height: 768px;
     opacity: 0.5;
     overflow: auto;
-    position: absolute;    
+    position: absolute;
+    top: 1000px;    
 }
+
 #priends {
     border: 1px solid black;
     width: 768px;
     height: 768px;
     overflow: auto;
     position: absolute;
-    top: 800px;
 }
 
 .priend {
