@@ -36,6 +36,12 @@ window.fbAsyncInit = function() {
 		       prnd.append(prndimg);
 		       prndimg.attr('src',  fpic[id]);
 		       $('#priends').append(prnd);
+		       prnd.click(function(){
+				      var url = 
+					  'http://3.bigrbox1.appspot.com/box/party?party=true#' +
+					  encodeURIComponent(JSON.stringify(alll[id]));
+				      window.open(url, 'mywin','left='+50+',top='+0+',width=1024,height=768,toolbar=0,resizable=0,scrollbars=0');   
+				  });
 		   }
 
 		   var el  = $(el);
@@ -167,14 +173,9 @@ window.fbAsyncInit = function() {
 					   $('<div></div>')
 					       .addClass('friend')
 					       .attr('id', frnd.id).append($('<img src="">')
-										       .css('width', '100%')
-										       .css('width', '100%'))
-					       .click(function(){
-							  var url = 
-							      'http://3.bigrbox1.appspot.com/box/party?party=true#' +
-							      encodeURIComponent(JSON.stringify(alll[frnd.id]));
-							  window.open(url, 'mywin','left='+50+',top='+0+',width=1024,height=768,toolbar=0,resizable=0,scrollbars=0');   
-						      }).appendTo('#friends');
+									   .css('width', '100%')
+									   .css('width', '100%'))
+					       .appendTo('#friends');
 					   FB.api('/' + frnd.id + '/feed', cb);		   
 				       });
 			    });
