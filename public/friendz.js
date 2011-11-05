@@ -31,10 +31,10 @@ window.fbAsyncInit = function() {
 		   if ($('#r' + id).size() === 0) {
 		       var prnd = $('<div></div>');
 		       var prndimg = $($(el).children()[0]).clone();
-		       prndimg.src = fpic[id];
 		       prnd.attr('id', 'r' + id);
 		       prnd.addClass('priend');
 		       prnd.append(prndimg);
+		       prndimg.attr('src',  fpic[id]);
 		       $('#priends').append(prnd);
 		   }
 
