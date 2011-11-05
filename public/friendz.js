@@ -31,6 +31,7 @@ window.fbAsyncInit = function() {
 		   if ($('#r' + id).size() === 0) {
 		       var prnd = $('<div></div>');
 		       var prndimg = $($(el).children()[0]).clone();
+		       prndimg.src = fpic[id];
 		       prnd.attr('id', 'r' + id);
 		       prnd.addClass('priend');
 		       prnd.append(prndimg);
@@ -73,6 +74,7 @@ window.fbAsyncInit = function() {
 
     alll = {};
     track = {};
+    fpic = {};
 
     $('#playit').click(function(){
 		       });
@@ -161,10 +163,10 @@ window.fbAsyncInit = function() {
 		 if (!url){
 		     FB.api('/me/friends?fields=picture', function(resp) {
 				$.each(resp.data, function(i, frnd){
-
+					   fpic['#' + frnd.id] = frnd.picture;
 					   $('<div></div>')
 					       .addClass('friend')
-					       .attr('id', frnd.id).append($('<img src="' + frnd.picture + '">')
+					       .attr('id', frnd.id).append($('<img src="">')
 										       .css('width', '100%')
 										       .css('width', '100%'))
 					       .click(function(){
