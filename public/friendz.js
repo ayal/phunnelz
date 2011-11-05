@@ -35,7 +35,9 @@ window.fbAsyncInit = function() {
 		       $('#priends').append(prnd);
 		   }   
 
-		   $('#r' + id).animate({'top': $(el).position().top,
+		   $('#r' + id).animate({'width': $(el).width(),
+					 'height': $(el).height(),
+					 'top': $(el).position().top,
 					 'left': $(el).position().left});
 	       });
     }
