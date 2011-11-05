@@ -516,10 +516,16 @@ app.get('/channel', function(req, res){
 	    res.send('<script src="http://connect.facebook.net/en_US/all.js"></script>');
 	});
 
-app.all('/party', function (req, res) {
+app.all('/partea', function (req, res) {
 	    evt(req, 'root');
-	    res.render("phunnelz", {layout: true, req: req, cfg: cfg});
+	    res.render("phunnelz", {layout: true, req: req, cfg: cfg, scrpt: '/friendzzz.js'});
 	});
+
+app.all('/partee', function (req, res) {
+	    evt(req, 'root');
+	    res.render("phunnelz", {layout: true, req: req, cfg: cfg, scrpt: '/friendz.js'});
+	});
+
 
 // TODO: find out about development stuff
 
