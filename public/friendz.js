@@ -163,7 +163,7 @@ window.fbAsyncInit = function() {
 		 if (!url){
 		     FB.api('/me/friends?fields=picture', function(resp) {
 				$.each(resp.data, function(i, frnd){
-					   fpic['#' + frnd.id] = frnd.picture;
+					   fpic[frnd.id] = frnd.picture;
 					   $('<div></div>')
 					       .addClass('friend')
 					       .attr('id', frnd.id).append($('<img src="">')
