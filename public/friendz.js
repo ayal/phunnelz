@@ -24,10 +24,10 @@ window.fbAsyncInit = function() {
 	}
     }    
 
-    function draw(){
-	$.each($('#friends').children(), function(i, el){
+    function draw() {
+	$.each($('#friends').children(), function(i, el) {
 		   var id = $(el).attr('id');
-		   
+		   if (!alll[id]) return;
 		   if ($('#r' + id).size() === 0) {
 		       var prnd = $('<div></div>');
 		       var prndimg = $($(el).children()[0]).clone();
