@@ -26,14 +26,20 @@ window.fbAsyncInit = function() {
     function draw(){
 	$.each($('#friends').children(), function(i, el){
 		   var id = $(el).attr('id');
+		   
+		   if ($('#' + id).size() > 1) {
+		       debugger;
+		   }
+
 		   if ($('#r' + id).size() === 0) {
 		       var prnd = $('<div></div>');
-		       var prndimg = $(el).children()[0].clone();
+		       var prndimg = $($(el).children()[0]).clone();
 		       prnd.attr('id', 'r' + id);
 		       prnd.addClass('priend');
 		       prnd.append(prndimg);
 		       $('#priends').append(prnd);
 		   }
+
 		   var el  = $(el);
 		   var elpos = el.position();
 		   
@@ -158,6 +164,10 @@ window.fbAsyncInit = function() {
 		 if (!url){
 		     FB.api('/me/friends?fields=picture', function(resp) {
 				$.each(resp.data, function(i, frnd){
+					   if ($('#' + frnd.id).size() > 0) {
+					       debugger;
+					   }
+
 					   $('<div></div>')
 					       .addClass('friend')
 					       .attr('id', frnd.id).append($('<img src="' + frnd.picture + '">')
