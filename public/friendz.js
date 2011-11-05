@@ -34,16 +34,23 @@ window.fbAsyncInit = function() {
 		       prnd.removeClass('friend');
 		       prnd.addClass('priend');
 		       $('#priends').append(prnd);
-		   }   
-		   if ($('#r' + id).width() !== $(el).width() &&
-		       $('#r' + id).position().top !== $(el).position().top &&
-		       $('#r' + id).position().left !== $(el).position().left) {
+		   }
+		   var el  = $(el);
+		   var elpos = el.position();
+		   
+		   if ($('#r' + id).width() !== el.width() &&
+		       $('#r' + id).position().top !== elpos.top &&
+		       $('#r' + id).position().left !== elpos.left) {
 		       
-		       $('#r' + id).animate({'width': $(el).width() + 'px',
-					     'height': $(el).height() + 'px',
-					     'top': $(el).position().top,
-					     'left': $(el).position().left}, function(){
-						var j = this; 
+		       $('#r' + id).animate({'width': el.width() + 'px',
+					     'height': el.height() + 'px',
+					     'top': elpos.top,
+					     'left': elpos.left}, function(){
+						 $('#r' + id)
+						     .css('width', el.width())
+						     .css('height', el.height())
+						     .css('top', elpos.top)
+						     .css('left', elpos.left);
 					     });
 
 		   }
