@@ -44,7 +44,6 @@ window.fbAsyncInit = function() {
 		       });
 
     function reposition (id) {
-	debugger;
 	var p = $(id).parent();
 	var that = $(id);
 	var w = that.width() * 2;
@@ -59,14 +58,14 @@ window.fbAsyncInit = function() {
 	       });
 
 
-	$(id).animate({
+/*	$(id).animate({
 			  'width': w,
 			  'height': h
-		      }, function() {
+		      }, function() {*/
 			  $(id)
 			      .css('width', w * 2)
 			      .css('height', h * 2);
-		      });
+//		      });
 	
     }
     
@@ -98,7 +97,7 @@ window.fbAsyncInit = function() {
 					       $('#' + msg.from.id).show();
 					       track[msg.from.id] = track[msg.from.id] || 0;
 					       track[msg.from.id]++;
-					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 15) === 0) {
+					       if (track[msg.from.id] !== 0 && (track[msg.from.id] % 8) === 0) {
 						   reposition('#' + msg.from.id);
 					       }
 					       if (!alll[msg.from.id]){
